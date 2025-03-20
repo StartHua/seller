@@ -1,0 +1,68 @@
+# 电商数据排行分析系统配置文件
+
+# 系统基本配置
+system:
+  name: "电商热卖排行分析系统"
+  version: "1.0.0"
+  log_level: "INFO"
+  data_dir: "./data"
+  temp_dir: "./temp"
+
+# 数据库配置
+database:
+  type: "mysql"  # 从sqlite改为mysql
+  host: "localhost"
+  port: 3306
+  user: "ecommerce_user"     # 数据库用户名
+  password: "strong_password"  # 数据库密码
+  database: "ecommerce"      # 数据库名称
+  charset: "utf8mb4"         # 支持存储表情符号等Unicode字符
+
+# 用户界面配置
+ui:
+  title: "电商热卖排行分析系统"
+  theme: "default"  # default, dark, gradio/soft
+  port: 7860
+  debug: false
+  default_platform: "全部"
+  default_category: "全部"
+  default_time_range: "week"
+  max_items_display: 100
+
+# 数据收集配置
+collection:
+  schedule_interval_hours: 24
+  max_products_per_collection: 200
+  retry_count: 3
+  retry_delay: 5
+  timeout: 10
+  proxy: ""  # 如果需要代理，格式为 "http://user:pass@host:port"
+
+# 平台API配置
+platforms:
+  tiktok:
+    enabled: true
+    api_key: "your_tiktok_api_key"
+    api_secret: "your_tiktok_api_secret"
+    shop_id: "your_shop_id"
+    
+  amazon:
+    enabled: true
+    api_key: "your_amazon_api_key"
+    api_secret: "your_amazon_api_secret"
+    
+  shopee:
+    enabled: true
+    api_key: "your_shopee_api_key"
+    api_secret: "your_shopee_api_secret"
+    partner_id: "your_partner_id"
+    shop_id: "your_shop_id"
+
+# LLM服务配置
+llm:
+  provider: "openai"  # openai, azure, huggingface
+  model: "gpt-3.5-turbo"
+  api_key: "your_api_key"
+  temperature: 0.7
+  max_tokens: 1000
+  system_prompt: "你是一位电商数据分析专家，帮助用户分析商品排行数据。" 

@@ -1,0 +1,34 @@
+# 核心依赖
+numpy==1.24.3
+pandas==2.0.2
+sqlalchemy==2.0.19
+pyyaml==6.0.1
+requests==2.31.0
+beautifulsoup4==4.12.2
+matplotlib==3.7.2
+gradio==3.36.1
+flask==2.3.3
+flask-login==0.6.2
+
+# 数据库驱动
+pymysql>=1.0.2
+psycopg2-binary==2.9.7
+
+# API和AI
+openai==0.28.0
+langchain==0.0.264
+tiktoken==0.4.0
+
+# 工具
+python-dateutil==2.8.2
+schedule==1.2.0
+tqdm==4.66.1
+python-dotenv==1.0.0
+
+# 开发工具
+pytest==7.4.0
+black==23.7.0
+flake8==6.1.0
+
+# 添加MySQL支持
+mysql-connector-python>=8.0.28 
