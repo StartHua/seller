@@ -22,6 +22,8 @@ import os
 from datetime import datetime
 import json
 import importlib
+import time
+import urllib.parse
 
 Base = declarative_base()
 
@@ -39,7 +41,7 @@ class Product(Base):
     reviews_count = Column(Integer)
     enhanced_description = Column(String)
     sentiment_score = Column(Float)
-    metadata = Column(JSON)
+    product_metadata = Column(JSON)
     
 class DatabaseManager:
     """数据库管理器"""
@@ -71,8 +73,11 @@ class DatabaseManager:
             database = db_config.get('database', 'ecommerce')
             charset = db_config.get('charset', 'utf8mb4')
             
+            # 密码编码
+            password_encoded = urllib.parse.quote_plus(password)
+            
             # 构建连接URL
-            connection_url = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}?charset={charset}"
+            connection_url = f"mysql+pymysql://{user}:{password_encoded}@{host}:{port}/{database}?charset={charset}"
             self.engine = create_engine(connection_url, pool_recycle=3600, pool_size=10, max_overflow=20, echo=False)
             self.logger.info(f"Connected to MySQL database: {host}:{port}/{database}")
         elif db_type == 'postgresql':
@@ -309,5 +314,40 @@ class DatabaseManager:
             self.logger.error(f"Error saving report: {e}")
             session.rollback()
             return None
+        finally:
+            session.close()
+    
+    def get_hot_products(self, platform=None, category=None, limit=20):
+        """获取热门商品列表"""
+        try:
+            cache_key = f"hot_products:{platform}:{category}:{limit}"
+            cached = self.cache.get(cache_key)
+            if cached:
+                return cached
+            
+            session = self.Session()
+            query = session.query(self.models.Product)
+            
+            if platform:
+                query = query.filter(self.models.Product.platform == platform)
+            
+            if category:
+                query = query.filter(self.models.Product.category == category)
+            
+            # 按流行度排序
+            query = query.order_by(self.models.Product.popularity_score.desc())
+            
+            # 限制结果数量
+            query = query.limit(limit)
+            
+            # 转换为字典列表
+            products = [p.to_dict() for p in query.all()]
+            
+            self.cache.set(cache_key, products, expire=3600)  # 1小时缓存
+            return products
+            
+        except Exception as e:
+            self.logger.error(f"Error getting hot products: {e}")
+            return []
         finally:
             session.close() 

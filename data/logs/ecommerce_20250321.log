@@ -1,0 +1,202 @@
+2025-03-21 15:39:42,256 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 15:39:42,256 - __main__ - INFO - Initializing system...
+2025-03-21 15:39:42,862 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 15:39:42,862 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 15:39:43,243 - __main__ - ERROR - Error starting system: cannot import name 'url_decode' from 'werkzeug.urls' (D:\sofa\conda\envs\seller\Lib\site-packages\werkzeug\urls.py)
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 85, in main
+    from ui.app import GradioApp
+  File "D:\Project\serller\ui\app.py", line 19, in <module>
+    from flask_login import LoginManager, login_required
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\flask_login\__init__.py", line 12, in <module>
+    from .login_manager import LoginManager
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\flask_login\login_manager.py", line 33, in <module>
+    from .utils import _create_identifier
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\flask_login\utils.py", line 14, in <module>
+    from werkzeug.urls import url_decode
+ImportError: cannot import name 'url_decode' from 'werkzeug.urls' (D:\sofa\conda\envs\seller\Lib\site-packages\werkzeug\urls.py)
+2025-03-21 15:41:08,575 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 15:41:08,575 - __main__ - INFO - Initializing system...
+2025-03-21 15:41:08,679 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 15:41:08,679 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 15:41:10,322 - __main__ - ERROR - Error starting system: No module named 'plotly'
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 85, in main
+    from ui.app import GradioApp
+  File "D:\Project\serller\ui\app.py", line 29, in <module>
+    import plotly.express as px
+ModuleNotFoundError: No module named 'plotly'
+2025-03-21 15:42:29,669 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 15:42:29,669 - __main__ - INFO - Initializing system...
+2025-03-21 15:42:29,780 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 15:42:29,780 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 15:42:30,770 - SystemOrchestrator - INFO - Initializing System Orchestrator...
+2025-03-21 15:42:30,974 - __main__ - ERROR - Error starting system: Attribute name 'metadata' is reserved when using the Declarative API.
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 88, in main
+    orchestrator = SystemOrchestrator(config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Project\serller\business_logic\orchestrator.py", line 34, in __init__
+    from storage.database import DatabaseManager
+  File "D:\Project\serller\storage\database.py", line 29, in <module>
+    class Product(Base):
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_api.py", line 195, in __init__
+    _as_declarative(reg, cls, dict_)
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 247, in _as_declarative
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 328, in setup_mapping
+    return _ClassScanMapperConfig(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 574, in __init__
+    self._extract_mappable_attributes()
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 1507, in _extract_mappable_attributes
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Attribute name 'metadata' is reserved when using the Declarative API.
+2025-03-21 15:58:01,197 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 15:58:01,197 - __main__ - INFO - Initializing system...
+2025-03-21 15:58:01,301 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 15:58:01,301 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 15:58:02,266 - SystemOrchestrator - INFO - Initializing System Orchestrator...
+2025-03-21 15:58:02,411 - __main__ - ERROR - Error starting system: 'SchemaItem' object, such as a 'Column' or a 'Constraint' expected, got {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_unicode_ci'}
+Traceback (most recent call last):
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 222, in _init_items
+    spwd = item._set_parent_with_dispatch
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute '_set_parent_with_dispatch'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 88, in main
+    orchestrator = SystemOrchestrator(config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Project\serller\business_logic\orchestrator.py", line 35, in __init__
+    self.db_manager = DatabaseManager(config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Project\serller\storage\database.py", line 52, in __init__
+    from storage import models
+  File "D:\Project\serller\storage\models.py", line 23, in <module>
+    class Product(Base):
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_api.py", line 195, in __init__
+    _as_declarative(reg, cls, dict_)
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 247, in _as_declarative
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 328, in setup_mapping
+    return _ClassScanMapperConfig(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 578, in __init__
+    self._setup_table(table)
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 1721, in _setup_table
+    table_cls(
+  File "<string>", line 2, in __new__
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 434, in __new__
+    return cls._new(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 488, in _new
+    with util.safe_reraise():
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 484, in _new
+    table.__init__(name, metadata, *args, _no_init=False, **kw)
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 876, in __init__
+    self._init_items(
+  File "D:\sofa\conda\envs\seller\Lib\site-packages\sqlalchemy\sql\schema.py", line 224, in _init_items
+    raise exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: 'SchemaItem' object, such as a 'Column' or a 'Constraint' expected, got {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_unicode_ci'}
+2025-03-21 16:04:32,859 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 16:04:32,859 - __main__ - INFO - Initializing system...
+2025-03-21 16:04:32,961 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 16:04:32,961 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 16:04:33,942 - SystemOrchestrator - INFO - Initializing System Orchestrator...
+2025-03-21 16:04:34,086 - DatabaseManager - INFO - Connected to MySQL database: rm-bp1y1k64127xy647tpo.mysql.rds.aliyuncs.com:3306/seller
+2025-03-21 16:04:34,508 - DatabaseManager - INFO - Database tables created successfully
+2025-03-21 16:04:34,509 - SystemOrchestrator - INFO - Database manager initialized
+2025-03-21 16:04:34,523 - SystemOrchestrator - INFO - Data cleaner initialized
+2025-03-21 16:04:34,523 - SystemOrchestrator - INFO - LLM service disabled
+2025-03-21 16:04:34,528 - SystemOrchestrator - INFO - TikTok collector initialized
+2025-03-21 16:04:34,573 - SystemOrchestrator - INFO - Amazon collector initialized
+2025-03-21 16:04:34,575 - SystemOrchestrator - INFO - Shopee collector initialized
+2025-03-21 16:04:34,581 - SystemOrchestrator - INFO - Analytics engines initialized
+2025-03-21 16:04:34,581 - SystemOrchestrator - INFO - Scheduled data collection every 24 hours
+2025-03-21 16:04:34,581 - SystemOrchestrator - INFO - Scheduler thread started
+2025-03-21 16:04:34,581 - SystemOrchestrator - INFO - System Orchestrator initialized successfully
+2025-03-21 16:04:34,582 - __main__ - INFO - System orchestrator initialized
+2025-03-21 16:04:34,582 - __main__ - INFO - Collecting initial data...
+2025-03-21 16:04:34,582 - SystemOrchestrator - INFO - Starting data collection. Platform: None, Category: None
+2025-03-21 16:04:34,582 - SystemOrchestrator - INFO - Collecting data from tiktok...
+2025-03-21 16:04:35,069 - TikTokCollector - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:04:35,070 - TikTokCollector - INFO - Retrying in 2.61 seconds...
+2025-03-21 16:04:38,175 - TikTokCollector - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:04:38,177 - TikTokCollector - INFO - Retrying in 4.01 seconds...
+2025-03-21 16:04:42,699 - TikTokCollector - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:04:42,699 - TikTokCollector - ERROR - All retry attempts failed for URL: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:04:42,700 - TikTokCollector - ERROR - Failed to collect TikTok hot products: 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:04:42,702 - SystemOrchestrator - WARNING - No products collected from tiktok
+2025-03-21 16:04:42,703 - SystemOrchestrator - INFO - Collecting data from amazon...
+2025-03-21 16:04:44,089 - AmazonCollector - INFO - Collected 0 products from Amazon
+2025-03-21 16:04:44,089 - SystemOrchestrator - WARNING - No products collected from amazon
+2025-03-21 16:04:44,089 - SystemOrchestrator - INFO - Collecting data from shopee...
+2025-03-21 16:04:45,510 - ShopeeCollector - ERROR - API error: There is no any param in query.
+2025-03-21 16:04:45,511 - SystemOrchestrator - WARNING - No products collected from shopee
+2025-03-21 16:04:45,521 - SystemOrchestrator - INFO - Data collection completed. Total products: 0
+2025-03-21 16:04:45,523 - __main__ - INFO - Initial data collection completed
+2025-03-21 16:04:45,525 - __main__ - INFO - Starting web application...
+2025-03-21 16:04:46,208 - __main__ - ERROR - Error starting system: 'ui'
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 100, in main
+    app.launch()
+  File "D:\Project\serller\ui\app.py", line 297, in launch
+    with gr.Blocks(title=self.config['ui']['title'], theme=self.config['ui']['theme']) as app:
+                         ~~~~~~~~~~~^^^^^^
+KeyError: 'ui'
+2025-03-21 16:07:52,144 - __main__ - INFO - Logging initialized. Level: INFO
+2025-03-21 16:07:52,145 - __main__ - INFO - Initializing system...
+2025-03-21 16:07:52,254 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-03-21 16:07:52,254 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-03-21 16:07:53,250 - SystemOrchestrator - INFO - Initializing System Orchestrator...
+2025-03-21 16:07:53,393 - DatabaseManager - INFO - Connected to MySQL database: rm-bp1y1k64127xy647tpo.mysql.rds.aliyuncs.com:3306/seller
+2025-03-21 16:07:53,856 - DatabaseManager - INFO - Database tables created successfully
+2025-03-21 16:07:53,856 - SystemOrchestrator - INFO - Database manager initialized
+2025-03-21 16:07:53,861 - SystemOrchestrator - INFO - Data cleaner initialized
+2025-03-21 16:07:53,861 - SystemOrchestrator - INFO - LLM service disabled
+2025-03-21 16:07:53,864 - SystemOrchestrator - INFO - TikTok collector initialized
+2025-03-21 16:07:53,900 - SystemOrchestrator - INFO - Amazon collector initialized
+2025-03-21 16:07:53,900 - SystemOrchestrator - INFO - Shopee collector initialized
+2025-03-21 16:07:53,901 - SystemOrchestrator - INFO - Analytics engines initialized
+2025-03-21 16:07:53,902 - SystemOrchestrator - INFO - Scheduled data collection every 24 hours
+2025-03-21 16:07:53,902 - SystemOrchestrator - INFO - Scheduler thread started
+2025-03-21 16:07:53,902 - SystemOrchestrator - INFO - System Orchestrator initialized successfully
+2025-03-21 16:07:53,902 - __main__ - INFO - System orchestrator initialized
+2025-03-21 16:07:53,903 - __main__ - INFO - Collecting initial data...
+2025-03-21 16:07:53,903 - SystemOrchestrator - INFO - Starting data collection. Platform: None, Category: None
+2025-03-21 16:07:53,903 - SystemOrchestrator - INFO - Collecting data from tiktok...
+2025-03-21 16:07:54,396 - TikTokCollector - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:07:54,398 - TikTokCollector - INFO - Retrying in 2.04 seconds...
+2025-03-21 16:07:56,984 - TikTokCollector - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:07:56,985 - TikTokCollector - INFO - Retrying in 4.68 seconds...
+2025-03-21 16:08:02,186 - TikTokCollector - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:08:02,187 - TikTokCollector - ERROR - All retry attempts failed for URL: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:08:02,188 - TikTokCollector - ERROR - Failed to collect TikTok hot products: 400 Client Error: Bad Request for url: https://open-api.tiktokglobalshop.com/api/products/search
+2025-03-21 16:08:02,191 - SystemOrchestrator - WARNING - No products collected from tiktok
+2025-03-21 16:08:02,191 - SystemOrchestrator - INFO - Collecting data from amazon...
+2025-03-21 16:08:03,595 - AmazonCollector - INFO - Collected 0 products from Amazon
+2025-03-21 16:08:03,596 - SystemOrchestrator - WARNING - No products collected from amazon
+2025-03-21 16:08:03,596 - SystemOrchestrator - INFO - Collecting data from shopee...
+2025-03-21 16:08:05,028 - ShopeeCollector - ERROR - API error: There is no any param in query.
+2025-03-21 16:08:05,029 - SystemOrchestrator - WARNING - No products collected from shopee
+2025-03-21 16:08:05,032 - SystemOrchestrator - INFO - Data collection completed. Total products: 0
+2025-03-21 16:08:05,036 - __main__ - INFO - Initial data collection completed
+2025-03-21 16:08:05,038 - __main__ - INFO - Starting web application...
+2025-03-21 16:08:05,787 - __main__ - ERROR - Error starting system: 'ui'
+Traceback (most recent call last):
+  File "D:\Project\serller\main.py", line 100, in main
+    app.launch()
+  File "D:\Project\serller\ui\app.py", line 297, in launch
+    with gr.Blocks(title=self.config['ui']['title'], theme=self.config['ui']['theme']) as app:
+                         ~~~~~~~~~~~^^^^^^
+KeyError: 'ui'

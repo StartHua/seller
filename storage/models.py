@@ -55,13 +55,13 @@ class Product(Base):
     
     # MySQL特定的表选项
     __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_unicode_ci'},
         Index('idx_platform_category', 'platform', 'category'),
         Index('idx_sales_volume', 'sales_volume', 'platform'),
         Index('idx_rating', 'rating', 'platform'),
         Index('idx_price', 'price'),
         Index('idx_popularity', 'popularity_score'),
-        Index('idx_created_at', 'created_at')
+        Index('idx_created_at', 'created_at'),
+        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_unicode_ci'}
     )
     
     def to_dict(self):

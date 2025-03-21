@@ -32,3 +32,4 @@ flake8==6.1.0
 
 # 添加MySQL支持
 mysql-connector-python>=8.0.28 
+plotly

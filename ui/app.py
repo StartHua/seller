@@ -284,44 +284,43 @@ class GradioApp:
     
     def launch(self):
         """启动Gradio应用"""
-        # 创建UI组件
-        from ui.ranking_components import RankingComponents
-        from ui.trend_components import TrendComponents
-        from ui.comparison_components import ComparisonComponents
-        
-        ranking_components = RankingComponents(self.orchestrator)
-        trend_components = TrendComponents(self.orchestrator)
-        comparison_components = ComparisonComponents(self.orchestrator)
-        
-        # 创建界面
-        with gr.Blocks(title=self.config['ui']['title'], theme=self.config['ui']['theme']) as app:
-            gr.Markdown(f"# {self.config['ui']['title']}")
+        try:
+            # 使用安全的get方法获取配置，并提供默认值
+            title = self.config.get('ui', {}).get('title', "电商热卖排行分析系统")
+            theme = self.config.get('ui', {}).get('theme', "default")
             
-            # 创建主标签页
-            with gr.Tabs():
-                # 首页/概览标签页
-                with gr.Tab("市场概览"):
-                    self._create_overview_tab()
+            with gr.Blocks(title=title, theme=theme) as app:
+                gr.Markdown(f"# {title}")
                 
-                # 添加排行榜标签页
-                ranking_components.build_rankings_tab()
-                
-                # 添加趋势分析标签页
-                trend_components.build_trends_tab()
-                
-                # 添加平台对比标签页
-                comparison_components.build_comparison_tab()
-                
-                # 添加数据导出标签页
-                with gr.Tab("数据导出"):
-                    self._create_export_tab()
-        
-        # 启动应用
-        app.launch(
-            server_name="0.0.0.0",
-            server_port=self.config['ui']['port'],
-            share=False
-        )
+                # 创建主标签页
+                with gr.Tabs():
+                    # 首页/概览标签页
+                    with gr.Tab("市场概览"):
+                        self._create_overview_tab()
+                    
+                    # 添加排行榜标签页
+                    self._create_rankings_tab()
+                    
+                    # 添加趋势分析标签页
+                    self._create_trends_tab()
+                    
+                    # 添加平台对比标签页
+                    self._create_comparison_tab()
+                    
+                    # 添加数据导出标签页
+                    with gr.Tab("数据导出"):
+                        self._create_export_tab()
+            
+            # 启动应用
+            app.launch(
+                server_name="0.0.0.0",
+                server_port=self.config['ui']['port'],
+                share=False
+            )
+        except Exception as e:
+            self.logger.error(f"启动UI失败: {e}")
+            import traceback
+            self.logger.error(traceback.format_exc())
     
     def _create_overview_tab(self):
         """创建概览标签页"""
